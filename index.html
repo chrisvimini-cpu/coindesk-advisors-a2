@@ -1,0 +1,1073 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CoinDesk Advisors — Premium Digital Asset Intelligence</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+  <style>
+    /* -------------------------
+       FAMILY FONT — @font-face
+    ------------------------- */
+    @font-face {
+      font-family: 'Family';
+      src: url('fonts/Family-Regular.otf') format('opentype');
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Family';
+      src: url('fonts/Family-Medium.otf') format('opentype');
+      font-weight: 500;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Family';
+      src: url('fonts/Family-Bold.otf') format('opentype');
+      font-weight: 700;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Family';
+      src: url('fonts/Family-Italic.otf') format('opentype');
+      font-weight: 400;
+      font-style: italic;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Family';
+      src: url('fonts/Family-MediumItalic.otf') format('opentype');
+      font-weight: 500;
+      font-style: italic;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Family';
+      src: url('fonts/Family-BoldItalic.otf') format('opentype');
+      font-weight: 700;
+      font-style: italic;
+      font-display: swap;
+    }
+
+    :root {
+      /* Brand */
+      --color-brand: #FFD200;
+      --color-brand-hover: #F3C00B;
+      --color-surface-brand: #FFD200;
+
+      /* Backgrounds */
+      --color-bg: #FFFFFF;
+      --color-bg-fill: #FAFAFA;
+      --color-surface: #F4F4F4;
+
+      /* Text */
+      --color-text: #262626;
+      --color-text-strong: #000000;
+      --color-text-subtle: #676767;
+      --color-text-disabled: #8C8C8C;
+      --color-text-inverse: #FFFFFF;
+
+      /* Borders */
+      --color-border: #D9D9D9;
+      --color-border-strong: #A6A6A6;
+      --color-border-callout: #000000;
+
+      /* Structural */
+      --color-nav-bg: #000000;
+      --color-footer-bg: #000000;
+
+      /* Accents */
+      --color-accent-green: #18E589;
+      --color-accent-butter: #FBE072;
+      --color-accent-gold: #F3C00B;
+      --color-accent-charcoal: #262626;
+
+      /* Grays */
+      --color-gray-n6: #666666;
+      --color-gray-n5: #888888;
+      --color-gray-n4: #A6A6A6;
+      --color-gray-n3: #BFBFBF;
+      --color-gray-n1: #E9E9E9;
+
+      /* Typography */
+      --font-serif: 'Family', Georgia, 'Times New Roman', serif;
+      --font-sans: 'DM Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      --font-mono: 'DM Mono', 'Courier New', monospace;
+
+      /* Spacing */
+      --s0: 0px; --s1: 2px; --s2: 4px; --s3: 8px; --s4: 12px;
+      --s5: 16px; --s6: 20px; --s7: 24px; --s8: 30px; --s9: 36px;
+      --s10: 42px; --s11: 54px; --s12: 68px;
+
+      /* Layout */
+      --content-width: 680px;
+      --container-desktop: 1032px;
+      --container-xl: 1384px;
+      --nav-height: 52px;
+      --radius-card: 4px;
+      --radius-pill: 9999px;
+    }
+
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: var(--font-sans);
+      font-size: 16px;
+      line-height: 1.5;
+      color: var(--color-text);
+      background-color: var(--color-bg);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* Material Icons base */
+    .material-icons-outlined {
+      font-family: 'Material Icons Outlined';
+      font-size: 24px;
+      font-weight: normal;
+      font-style: normal;
+      display: inline-block;
+      line-height: 1;
+      text-transform: none;
+      letter-spacing: normal;
+      word-wrap: normal;
+      white-space: nowrap;
+      direction: ltr;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+      -moz-osx-font-smoothing: grayscale;
+      font-feature-settings: 'liga';
+      vertical-align: middle;
+    }
+
+    /* -------------------------
+       NAV
+    ------------------------- */
+    .nav {
+      width: 100%;
+      height: var(--nav-height);
+      background-color: var(--color-nav-bg);
+      display: flex;
+      align-items: center;
+      padding: 0 max(var(--s8), calc(50% - 610px));
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+    }
+
+    /* -------------------------
+       HERO
+    ------------------------- */
+    .hero {
+      text-align: center;
+      padding: 186px max(var(--s8), calc(50% - 610px)) 150px;
+      border-bottom: 1px solid var(--color-gray-n1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      background-image: url('Line-Texture.svg');
+      background-repeat: no-repeat;
+      background-size: 170% auto;
+      background-position: calc(50% + 15px) calc(100% + 35px);
+    }
+
+    .hero-badges {
+      margin-top: auto;
+      padding-top: 80px;
+    }
+
+    @media (max-width: 480px) {
+      .hero {
+        background-image: none;
+      }
+    }
+
+    .hero-badge {
+      display: inline-block;
+      font-family: var(--font-sans);
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--color-text-strong);
+      background-color: var(--color-brand);
+      padding: var(--s2) var(--s4);
+      border-radius: var(--radius-card);
+      margin-bottom: var(--s7);
+    }
+
+    .hero-headline {
+      font-family: var(--font-serif);
+      font-size: 56px;
+      font-weight: 700;
+      line-height: 1.1;
+      color: var(--color-text-strong);
+      margin-bottom: var(--s4);
+      letter-spacing: -0.02em;
+    }
+
+    .hero-subheadline {
+      font-family: var(--font-serif);
+      font-size: 20px;
+      font-weight: 400;
+      line-height: 1.4;
+      color: var(--color-text-subtle);
+      max-width: 700px;
+      margin: 0 auto var(--s9);
+    }
+
+    .hero-cta-text {
+      font-family: var(--font-sans);
+      font-size: 16px;
+      line-height: 1.5;
+      color: var(--color-text-subtle);
+      margin-bottom: var(--s7);
+    }
+
+    /* Hero Email Form */
+    .hero-form {
+      display: flex;
+      gap: 0;
+      margin-bottom: var(--s5);
+      max-width: 480px;
+      width: 100%;
+    }
+
+    .hero-input {
+      flex: 1;
+      font-family: var(--font-sans);
+      font-size: 14px;
+      padding: var(--s4) var(--s5);
+      border: 1px solid var(--color-border);
+      border-right: none;
+      border-radius: var(--radius-card) 0 0 var(--radius-card);
+      outline: none;
+      background-color: var(--color-bg);
+      color: var(--color-text);
+      transition: border-color 0.15s ease;
+    }
+
+    .hero-input:focus {
+      border-color: var(--color-border-strong);
+    }
+
+    .hero-input::placeholder {
+      color: var(--color-text-disabled);
+    }
+
+    .hero-btn {
+      font-family: var(--font-sans);
+      font-size: 14px;
+      font-weight: 600;
+      background-color: var(--color-text-strong);
+      color: var(--color-text-inverse);
+      border: none;
+      border-radius: 0 var(--radius-card) var(--radius-card) 0;
+      padding: var(--s4) var(--s7);
+      cursor: pointer;
+      transition: background-color 0.15s ease;
+      white-space: nowrap;
+    }
+
+    .hero-btn:hover {
+      background-color: var(--color-accent-charcoal);
+    }
+
+    .hero-ria-note {
+      font-family: var(--font-sans);
+      font-size: 13px;
+      color: var(--color-text-subtle);
+      margin-bottom: var(--s9);
+    }
+
+    /* Hero Trust Badges — Icon + Text + Divider */
+    .hero-badges {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: var(--s5);
+      background: rgba(255,255,255,0.2);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border-radius: var(--radius-pill);
+      padding: var(--s3) var(--s7);
+    }
+
+    .hero-badge-item {
+      font-family: var(--font-sans);
+      font-size: 13px;
+      font-weight: 500;
+      color: #34342F;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .hero-badge-item .material-icons-outlined {
+      font-size: 18px;
+      color: #34342F;
+    }
+
+    .hero-badge-divider {
+      color: var(--color-border);
+      font-size: 16px;
+      font-weight: 300;
+      user-select: none;
+    }
+
+    /* -------------------------
+       FEATURES
+    ------------------------- */
+    .features {
+      padding: var(--s12) max(var(--s8), calc(50% - 610px));
+      border-bottom: 1px solid var(--color-gray-n1);
+      background-color: #FAFAFA;
+    }
+
+    .features-header {
+      text-align: center;
+      margin-bottom: var(--s11);
+    }
+
+    .features-eyebrow {
+      display: inline-block;
+      font-family: var(--font-sans);
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--color-text-strong);
+      border: 1.5px solid var(--color-brand);
+      border-radius: var(--radius-pill);
+      padding: var(--s2) var(--s5);
+      margin-bottom: var(--s5);
+      background: transparent;
+    }
+
+    .features-title {
+      font-family: var(--font-serif);
+      font-size: 40px;
+      font-weight: 700;
+      line-height: 1.25;
+      color: var(--color-text-strong);
+      margin-bottom: var(--s5);
+    }
+
+    .features-subtitle {
+      font-family: var(--font-sans);
+      font-size: 16px;
+      line-height: 1.5;
+      color: var(--color-text-subtle);
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--s7);
+      width: 100%;
+    }
+
+    .feature-card {
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-card);
+      padding: var(--s7);
+      background-color: var(--color-bg);
+      transition: border-color 0.2s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .feature-card:hover {
+      border-color: var(--color-border-strong);
+    }
+
+    .feature-icon {
+      width: 44px;
+      height: 44px;
+      margin-bottom: var(--s6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: var(--color-surface);
+      border-radius: var(--radius-card);
+    }
+
+    .feature-icon .material-icons-outlined {
+      font-size: 24px;
+      color: var(--color-text-strong);
+    }
+
+    .feature-card h3 {
+      font-family: var(--font-serif);
+      font-size: 24px;
+      font-weight: 600;
+      line-height: 1.3;
+      color: var(--color-text-strong);
+      margin-bottom: var(--s4);
+    }
+
+    .feature-card p {
+      font-family: var(--font-sans);
+      font-size: 16px;
+      line-height: 1.5;
+      color: var(--color-text-subtle);
+      margin-bottom: var(--s6);
+      flex: 1;
+    }
+
+    .feature-link {
+      font-family: var(--font-sans);
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--color-text-strong);
+      transition: color 0.2s ease;
+    }
+
+    .feature-link:hover {
+      color: var(--color-accent-gold);
+    }
+
+    /* -------------------------
+       RESEARCH REPORT — Dark Theme, 2-Column Layout
+    ------------------------- */
+    .report {
+      background-color: var(--color-text-strong);
+      padding: 90px max(var(--s8), calc(50% - 610px));
+      position: relative;
+    }
+
+    .report > * { position: relative; z-index: 1; }
+
+    #report-texture-img {
+      position: absolute;
+      z-index: 0;
+      pointer-events: none;
+      top: 0; left: 0;
+      width: 100%;
+      height: auto;
+      transform: translate(151px, 134px) scale(-1.47, 1.47);
+      opacity: 0.18;
+    }
+
+    @media (max-width: 480px) {
+      #report-texture-img {
+        display: none;
+      }
+    }
+
+    .report-inner {
+      max-width: var(--container-desktop);
+      margin: 0 auto;
+    }
+
+    .report-header {
+      margin-bottom: var(--s11);
+    }
+
+    .report-eyebrow {
+      font-family: var(--font-sans);
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--color-brand);
+      margin-bottom: var(--s4);
+      display: block;
+    }
+
+    .report-heading {
+      font-family: var(--font-serif);
+      font-size: 40px;
+      font-weight: 700;
+      line-height: 1.25;
+      color: var(--color-text-inverse);
+      margin-bottom: var(--s6);
+    }
+
+    .report-description {
+      font-family: var(--font-serif);
+      font-size: 20px;
+      font-weight: 400;
+      line-height: 1.4;
+      color: var(--color-gray-n4);
+      max-width: 640px;
+    }
+
+    /* 2-Column Grid: Cover Left + Outcomes Right */
+    .research-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--s11);
+    }
+
+    /* Report Cover — Left Column */
+    .report-cover {
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      background-color: var(--color-text-strong);
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      border-radius: var(--radius-card);
+      overflow: hidden;
+    }
+
+    .report-cover-accent {
+      width: 100%;
+      height: 6px;
+      background-color: var(--color-brand);
+    }
+
+    .report-cover-inner {
+      padding: var(--s8);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      flex: 1;
+    }
+
+    .report-cover-label {
+      font-family: var(--font-sans);
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--color-brand);
+      margin-bottom: var(--s7);
+    }
+
+    .report-cover-title {
+      font-family: var(--font-serif);
+      font-size: 24px;
+      font-weight: 600;
+      line-height: 1.3;
+      color: var(--color-text-inverse);
+      margin-bottom: var(--s7);
+    }
+
+    .report-cover-meta {
+      font-family: var(--font-sans);
+      font-size: 13px;
+      color: var(--color-gray-n5);
+      margin-bottom: var(--s8);
+    }
+
+    .report-download-btn {
+      font-family: var(--font-sans);
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      background-color: var(--color-brand);
+      color: var(--color-text-strong);
+      border: none;
+      border-radius: var(--radius-pill);
+      padding: var(--s4) var(--s7);
+      cursor: pointer;
+      transition: background-color 0.15s ease;
+      display: inline-block;
+      text-decoration: none;
+      text-align: center;
+      width: 100%;
+    }
+
+    .report-download-btn:hover {
+      background-color: var(--color-brand-hover);
+    }
+
+    /* Learning Outcomes — Right Column */
+    .report-learn {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .report-learn-title {
+      font-family: var(--font-serif);
+      font-size: 20px;
+      font-weight: 600;
+      line-height: 1.3;
+      color: var(--color-text-inverse);
+      margin-bottom: var(--s7);
+    }
+
+    .report-outcomes {
+      display: flex;
+      flex-direction: column;
+      gap: var(--s6);
+    }
+
+    .report-outcome {
+      display: flex;
+      gap: var(--s5);
+      align-items: flex-start;
+    }
+
+    .report-outcome-num {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--color-brand);
+      min-width: 24px;
+      padding-top: 2px;
+    }
+
+    .report-outcome-content {
+      flex: 1;
+    }
+
+    .report-outcome-title {
+      font-family: var(--font-sans);
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--color-text-inverse);
+      margin-bottom: var(--s1);
+    }
+
+    .report-outcome-desc {
+      font-family: var(--font-sans);
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 1.5;
+      color: var(--color-gray-n4);
+    }
+
+    /* -------------------------
+       FINAL CTA
+    ------------------------- */
+    .final-cta {
+      text-align: center;
+      padding: 80px max(var(--s8), calc(50% - 610px)) 100px;
+      border-bottom: 1px solid var(--color-gray-n1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .final-cta-heading {
+      font-family: var(--font-serif);
+      font-size: 32px;
+      font-weight: 700;
+      line-height: 1.25;
+      color: var(--color-text-strong);
+      margin-bottom: var(--s5);
+    }
+
+    .final-cta-description {
+      font-family: var(--font-sans);
+      font-size: 16px;
+      line-height: 1.5;
+      color: var(--color-text-subtle);
+      max-width: 520px;
+      margin: 0 auto var(--s8);
+    }
+
+    .final-cta-form {
+      display: flex;
+      gap: 0;
+      max-width: 480px;
+      width: 100%;
+    }
+
+    .final-cta-input {
+      flex: 1;
+      font-family: var(--font-sans);
+      font-size: 14px;
+      padding: var(--s4) var(--s5);
+      border: 1px solid var(--color-border);
+      border-right: none;
+      border-radius: var(--radius-card) 0 0 var(--radius-card);
+      outline: none;
+      background-color: var(--color-bg);
+      color: var(--color-text);
+      transition: border-color 0.15s ease;
+    }
+
+    .final-cta-input:focus {
+      border-color: var(--color-border-strong);
+    }
+
+    .final-cta-input::placeholder {
+      color: var(--color-text-disabled);
+    }
+
+    .final-cta-btn {
+      font-family: var(--font-sans);
+      font-size: 14px;
+      font-weight: 600;
+      background-color: var(--color-text-strong);
+      color: var(--color-text-inverse);
+      border: none;
+      border-radius: 0 var(--radius-card) var(--radius-card) 0;
+      padding: var(--s4) var(--s7);
+      cursor: pointer;
+      transition: background-color 0.15s ease;
+      white-space: nowrap;
+    }
+
+    .final-cta-btn:hover {
+      background-color: var(--color-accent-charcoal);
+    }
+
+    /* -------------------------
+       FOOTER
+    ------------------------- */
+    .footer {
+      width: 100%;
+      background-color: var(--color-footer-bg);
+      padding: var(--s8) max(var(--s8), calc(50% - 610px));
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+    }
+
+    .footer-copy {
+      font-family: var(--font-sans);
+      font-size: 13px;
+      color: var(--color-gray-n5);
+    }
+
+    /* -------------------------
+       RESPONSIVE (768px)
+    ------------------------- */
+    @media (max-width: 768px) {
+      .nav {
+        padding: 0 var(--s5);
+      }
+
+      .hero {
+        padding: 60px var(--s5) 50px;
+      }
+
+      .hero-headline {
+        font-size: 40px;
+      }
+
+      .hero-subheadline {
+        font-size: 18px;
+      }
+
+      .hero-form {
+        flex-direction: column;
+        gap: var(--s3);
+      }
+
+      .hero-input {
+        border-right: 1px solid var(--color-border);
+        border-radius: var(--radius-card);
+      }
+
+      .hero-btn {
+        border-radius: var(--radius-card);
+      }
+
+      .hero-badges {
+        flex-direction: column;
+        gap: var(--s3);
+      }
+
+      .hero-badge-divider {
+        display: none;
+      }
+
+      .features {
+        padding: var(--s10) var(--s5);
+      }
+
+      .features-grid {
+        grid-template-columns: 1fr;
+        gap: var(--s5);
+      }
+
+      .report {
+        padding: 60px var(--s5);
+      }
+
+      .report-heading {
+        font-size: 26px;
+      }
+
+      .research-content {
+        grid-template-columns: 1fr;
+        gap: var(--s8);
+      }
+
+      .report-cover {
+        order: 1;
+      }
+
+      .report-learn {
+        order: 2;
+      }
+
+      .final-cta {
+        padding: 50px var(--s5) 60px;
+      }
+
+      .final-cta-heading {
+        font-size: 26px;
+      }
+
+      .final-cta-form {
+        flex-direction: column;
+        gap: var(--s3);
+      }
+
+      .final-cta-input {
+        border-right: 1px solid var(--color-border);
+        border-radius: var(--radius-card);
+      }
+
+      .final-cta-btn {
+        border-radius: var(--radius-card);
+      }
+
+      .footer {
+        flex-direction: column;
+        gap: var(--s5);
+        text-align: center;
+        padding: var(--s7) var(--s5);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===================== NAV ===================== -->
+  <nav class="nav">
+    <a href="/" class="nav-logo">
+      <svg width="170" height="22" viewBox="0 0 350 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M66.6115 32.0882C62.2231 32.0882 59.4905 28.1237 59.4905 22.6584C59.4905 17.1932 61.7681 13.1852 66.5684 13.1852C69.7156 13.1852 71.7833 15.2286 72.1575 17.9015H79.4858C79.1143 14.5638 77.6228 11.6439 75.057 9.68198C72.9463 8.05381 70.0468 7.05249 66.6115 7.05249C57.7944 7.05249 52.0383 13.7714 52.0383 22.6584C52.0383 31.5455 57.9586 38.1396 66.6518 38.1396C70.8329 38.1396 73.8563 36.97 76.1312 34.7584C78.1585 32.7965 79.4858 30.0856 79.6904 27.1223H72.3621C72.031 30.0015 69.8772 32.0882 66.6088 32.0882H66.6115Z" fill="white"/>
+        <path d="M93.2029 15.5245C86.4131 15.5245 81.8605 20.4063 81.8605 26.8321C81.8605 33.258 86.4131 38.1397 93.2029 38.1397C99.9928 38.1397 104.505 33.258 104.505 26.8321C104.505 20.4063 100.033 15.5245 93.2029 15.5245ZM93.1598 33.2987C90.2199 33.2987 88.688 30.7126 88.688 26.8321C88.688 22.9517 90.2199 20.3222 93.1598 20.3222C96.0998 20.3222 97.672 22.9517 97.672 26.8321C97.672 30.7126 96.0998 33.2987 93.1598 33.2987Z" fill="white"/>
+        <path d="M114.1 13.2488C115.539 11.798 115.539 9.44587 114.1 7.9951C112.661 6.54433 110.327 6.54433 108.888 7.9951C107.448 9.44587 107.448 11.798 108.888 13.2488C110.327 14.6996 112.661 14.6996 114.1 13.2488Z" fill="white"/>
+        <path d="M105.624 20.9135H108.432V37.4719H115.179V16.1077H105.624V20.9135Z" fill="white"/>
+        <path d="M131.726 15.4808C128.786 15.4808 126.759 16.7318 125.184 19.0275H125.06V16.1077H118.561V37.4719H125.308V25.6623C125.308 23.0328 126.799 21.155 129.034 21.155C131.268 21.155 132.345 22.699 132.345 24.9513V37.4692H139.092V23.5755C139.092 18.8186 136.359 15.4808 131.723 15.4808H131.726Z" fill="white"/>
+        <path d="M154.922 7.63562H142.296V37.469H154.467C158.193 37.469 161.174 36.5084 163.492 34.7581C166.803 32.2128 168.626 27.9985 168.626 22.7396C168.626 13.6028 163.12 7.63562 154.922 7.63562ZM153.929 31.2549H149.624V13.8118H154.012C158.608 13.8118 161.217 17.3178 161.217 22.7423C161.217 28.1668 158.732 31.2549 153.932 31.2549H153.929Z" fill="white"/>
+        <path d="M188.632 18.2819C186.809 16.613 184.411 15.6117 181.387 15.6117C174.929 15.6117 170.5 20.4935 170.5 26.8786C170.5 33.2637 174.805 38.2296 181.802 38.2296C184.494 38.2296 186.645 37.5214 188.425 36.2677C190.288 34.9733 191.529 33.1389 191.984 31.2204H185.401C184.823 32.5555 183.662 33.3478 181.883 33.3478C179.11 33.3478 177.535 31.5541 177.123 28.675H192.358C192.398 24.3359 191.157 20.621 188.632 18.2846V18.2819ZM177.166 24.6263C177.621 22.0809 178.945 20.4528 181.514 20.4528C183.708 20.4528 185.28 22.0809 185.531 24.6263H177.168H177.166Z" fill="white"/>
+        <path d="M205.69 24.1128C203.001 23.6108 200.599 23.4046 200.599 21.9012C200.599 20.5661 201.883 19.9393 203.539 19.9393C205.402 19.9393 206.686 20.5227 206.934 22.4439H213.145C212.814 18.2297 209.586 15.6002 203.582 15.6002C198.572 15.6002 194.434 17.9366 194.434 22.4439C194.434 27.4505 198.367 28.4519 202.05 29.0787C204.866 29.5807 207.432 29.787 207.432 31.7082C207.432 33.084 206.148 33.8357 204.121 33.8357C201.886 33.8357 200.478 32.7909 200.23 30.6635H193.855C194.062 35.3797 197.953 38.2588 204.164 38.2588C209.71 38.2588 213.81 35.8383 213.81 31.1655C213.81 25.7003 209.422 24.7397 205.696 24.1128H205.69Z" fill="white"/>
+        <path d="M229.678 24.1181L237.13 16.1075H229.347L223.055 23.3257V7.63562H216.389V37.4717H223.055V30.9211L225.085 28.7502L230.176 37.4717H238L229.678 24.1181Z" fill="white"/>
+        <path d="M22.1847 25.5106C23.6923 25.5106 24.9145 24.2873 24.9145 22.7784C24.9145 21.2694 23.6923 20.0461 22.1847 20.0461C20.677 20.0461 19.4548 21.2694 19.4548 22.7784C19.4548 24.2873 20.677 25.5106 22.1847 25.5106Z" fill="#FFD200"/>
+        <path d="M37.6534 25.5007C39.161 25.5007 40.3832 24.2774 40.3832 22.7685C40.3832 21.2595 39.161 20.0363 37.6534 20.0363C36.1458 20.0363 34.9236 21.2595 34.9236 22.7685C34.9236 24.2774 36.1458 25.5007 37.6534 25.5007Z" fill="#FFD200"/>
+        <path d="M37.7625 40.9834C39.2702 40.9834 40.4924 39.7601 40.4924 38.2511C40.4924 36.7422 39.2702 35.5189 37.7625 35.5189C36.2549 35.5189 35.0327 36.7422 35.0327 38.2511C35.0327 39.7601 36.2549 40.9834 37.7625 40.9834Z" fill="#FFD200"/>
+        <path d="M44.7369 5.70129C44.524 2.68918 42.1169 0.249652 39.125 0.0189953C37.2219 -0.12754 35.4834 0.605134 34.2731 1.85611C33.3539 2.80316 32.1194 3.37301 30.804 3.37301H30.3134C28.9657 3.37301 27.6934 2.79773 26.7473 1.83168C25.6395 0.700111 24.1003 0 22.4022 0C20.704 0 19.1649 0.700111 18.0571 1.82897C17.111 2.79502 15.8387 3.3703 14.491 3.3703H14.0246C12.7119 3.3703 11.437 2.86014 10.5313 1.90495C10.3534 1.71771 10.1593 1.5359 9.95176 1.36766C7.65791 -0.507445 4.29664 -0.439604 2.08096 1.52776C-0.592961 3.89674 -0.689998 8.00514 1.78984 10.4989C1.8141 10.5234 1.83836 10.5478 1.86262 10.5695C2.82221 11.4948 3.34783 12.7892 3.34783 14.1298V14.5884C3.34783 15.9452 2.77639 17.2233 1.8168 18.1785C0.695479 19.2937 4.51458e-05 20.8405 4.51458e-05 22.5528C4.51458e-05 24.2651 0.695479 25.8118 1.8141 26.9244C2.7737 27.8769 3.34244 29.1577 3.34244 30.5145V31.1251C3.34244 32.4493 2.77909 33.6921 1.83836 34.6175C0.652352 35.7871 -0.0646464 37.4396 0.00543611 39.2605C0.129428 42.4517 2.71979 45.0513 5.89237 45.1626C7.71182 45.225 9.36145 44.4869 10.5205 43.2712C11.4343 42.3106 12.6742 41.7353 13.995 41.7353H14.5206C15.8414 41.7353 17.0813 42.3133 17.9951 43.2712C19.2027 44.5412 20.9493 45.2901 22.8631 45.149C25.8632 44.9292 28.2864 42.4815 28.4967 39.4613C28.75 35.863 25.9225 32.8645 22.4022 32.8645C20.7202 32.8645 19.1973 33.551 18.0921 34.6582C17.1487 35.6052 15.8899 36.167 14.5556 36.167H14.0004C12.6688 36.167 11.3804 35.6432 10.4477 34.6853C10.4343 34.6718 10.4181 34.6555 10.4046 34.6419C9.44501 33.6867 8.87357 32.4086 8.87357 31.0518V30.5145C8.87357 29.1577 9.44501 27.8796 10.4046 26.9244C11.5259 25.8091 12.2214 24.2624 12.2214 22.5501C12.2214 20.8378 11.5259 19.291 10.4073 18.1785C9.44771 17.226 8.87896 15.9452 8.87896 14.5884V14.1135C8.87896 12.7648 9.43423 11.4867 10.3911 10.5424C10.4046 10.5288 10.4208 10.5152 10.4343 10.4989C10.4477 10.4827 10.4612 10.4718 10.4747 10.4582C11.4127 9.49491 12.6823 8.93591 14.0219 8.93591H14.4963C15.8441 8.93591 17.1137 9.51119 18.0625 10.4745C19.1703 11.6034 20.7067 12.3008 22.4049 12.3008C24.103 12.3008 25.6395 11.6034 26.7473 10.4745C27.6934 9.51119 28.9657 8.93591 30.3107 8.93591H30.7393C32.0871 8.93591 33.3566 9.50848 34.3027 10.4745C35.4106 11.6007 36.947 12.3008 38.6452 12.3008C42.1655 12.3008 44.993 9.30225 44.7396 5.70129H44.7369Z" fill="#FFD200"/>
+        <path d="M343.534 37.308C339.829 37.308 337.591 35.5277 337.399 32.9535H340.959C341.176 34.1564 342.09 34.83 343.558 34.83C344.905 34.83 345.675 34.2767 345.675 33.3625C345.675 32.2077 344.159 32.0634 342.379 31.7266C340.093 31.2935 337.784 30.7161 337.784 27.733C337.784 25.1107 340.166 23.7394 343.173 23.7394C346.733 23.7394 348.514 25.2791 348.85 27.5165H345.338C345.097 26.6023 344.376 26.1452 343.173 26.1452C342.018 26.1452 341.272 26.6263 341.272 27.4443C341.272 28.4066 342.668 28.5509 344.424 28.8637C346.709 29.2727 349.308 29.8741 349.308 33.0979C349.308 35.8645 346.854 37.308 343.534 37.308Z" fill="#FFD200"/>
+        <path d="M331.982 24.1003V26.3858H332.054C332.872 24.6055 334.027 23.8838 335.615 23.8838C335.976 23.8838 336.24 23.9078 336.409 23.98V27.2759H336.312C336.048 27.2278 335.783 27.2038 335.519 27.2038C333.474 27.1797 332.126 28.4548 332.126 30.9568V36.899H328.349V24.1003H331.982Z" fill="#FFD200"/>
+        <path d="M319.708 37.308C315.618 37.308 312.923 34.3489 312.923 30.5237C312.923 26.6744 315.618 23.7394 319.708 23.7394C323.773 23.7394 326.444 26.6744 326.444 30.5237C326.444 34.3489 323.773 37.308 319.708 37.308ZM319.683 34.5654C321.56 34.5654 322.619 32.9295 322.619 30.5237C322.619 28.0938 321.56 26.4339 319.683 26.4339C317.759 26.4339 316.748 28.0938 316.748 30.5237C316.748 32.9295 317.759 34.5654 319.683 34.5654Z" fill="#FFD200"/>
+        <path d="M305.873 37.308C302.168 37.308 299.931 35.5277 299.738 32.9535H303.299C303.515 34.1564 304.429 34.83 305.897 34.83C307.244 34.83 308.014 34.2767 308.014 33.3625C308.014 32.2077 306.498 32.0634 304.718 31.7266C302.433 31.2935 300.123 30.7161 300.123 27.733C300.123 25.1107 302.505 23.7394 305.512 23.7394C309.073 23.7394 310.853 25.2791 311.19 27.5165H307.677C307.437 26.6023 306.715 26.1452 305.512 26.1452C304.357 26.1452 303.611 26.6263 303.611 27.4443C303.611 28.4066 305.007 28.5509 306.763 28.8637C309.049 29.2727 311.647 29.8741 311.647 33.0979C311.647 35.8645 309.193 37.308 305.873 37.308Z" fill="#FFD200"/>
+        <path d="M294.259 22.2959V19H298.084V22.2959H294.259ZM294.283 36.899V24.1002H298.06V36.899H294.283Z" fill="#FFD200"/>
+        <path d="M284.375 36.8991L279.949 24.1003H283.846L285.41 29.2487C285.939 30.9568 286.42 33.7235 286.42 33.7235H286.493C286.493 33.7235 286.974 30.9568 287.503 29.2487L289.115 24.1003H292.916L288.441 36.8991H284.375Z" fill="#FFD200"/>
+        <path d="M270.998 37.308C267.678 37.308 265.512 34.7338 265.512 30.4996C265.512 26.5782 267.726 23.7394 271.046 23.7394C272.802 23.7394 273.981 24.5573 274.847 25.8805H274.895C274.847 25.0866 274.799 24.004 274.799 22.9214V19H278.576V36.899H274.943V35.0225H274.895C274.149 36.5862 272.73 37.308 270.998 37.308ZM272.008 34.2767C273.836 34.2767 274.919 32.737 274.919 30.4996C274.919 28.2382 273.981 26.6023 272.032 26.6023C270.252 26.6023 269.362 28.1901 269.362 30.4756C269.362 32.7851 270.252 34.2767 272.008 34.2767Z" fill="#FFD200"/>
+        <path d="M248 36.899L254.447 19H258.706L265.177 36.899H260.847L259.716 33.4828H253.221L252.114 36.899H248ZM255.29 27.2037L254.183 30.5477H258.778L257.695 27.2037C256.925 24.7498 256.541 22.4403 256.541 22.4403H256.492C256.492 22.4403 255.867 25.4475 255.29 27.2037Z" fill="#FFD200"/>
+      </svg>
+    </a>
+  </nav>
+
+  <!-- ===================== HERO ===================== -->
+  <section class="hero">
+    <span class="hero-badge">Coming Soon</span>
+    <h1 class="hero-headline">CoinDesk Advisors</h1>
+    <p class="hero-subheadline">Premium digital asset intelligence for wealth management professionals</p>
+    <p class="hero-cta-text">Join the waitlist to access exclusive institutional research</p>
+    <form class="hero-form" onsubmit="return false;">
+      <input type="email" class="hero-input" placeholder="Enter your email address" aria-label="Email address">
+      <button type="submit" class="hero-btn">Learn more</button>
+    </form>
+    <p class="hero-ria-note">Exclusive access for Registered Investment Advisers</p>
+    <div class="hero-badges">
+      <span class="hero-badge-item">
+        <span class="material-icons-outlined">lock</span>
+        Enterprise Security
+      </span>
+      <span class="hero-badge-divider">|</span>
+      <span class="hero-badge-item">
+        <span class="material-icons-outlined">verified_user</span>
+        RIA Exclusive
+      </span>
+      <span class="hero-badge-divider">|</span>
+      <span class="hero-badge-item">
+        <span class="material-icons-outlined">bar_chart</span>
+        Real-Time Data
+      </span>
+    </div>
+
+  </section>
+
+  <!-- ===================== FEATURES ===================== -->
+  <section class="features" id="learn-more">
+    <div class="features-header">
+      <p class="features-eyebrow">Institutional-Grade Platform</p>
+      <h2 class="features-title">Everything You Need</h2>
+      <p class="features-subtitle">Curated insights, exclusive research, and real-time market intelligence designed for registered investment advisors</p>
+    </div>
+    <div class="features-grid">
+      <!-- Card 1 -->
+      <div class="feature-card">
+        <div class="feature-icon">
+          <span class="material-icons-outlined">description</span>
+        </div>
+        <h3>Market Research</h3>
+        <p>Institutional-grade analysis covering Bitcoin, Ethereum, DeFi protocols, and emerging digital assets with actionable insights</p>
+        <a href="#" class="feature-link">Explore Research &rarr;</a>
+      </div>
+      <!-- Card 2 -->
+      <div class="feature-card">
+        <div class="feature-icon">
+          <span class="material-icons-outlined">play_circle</span>
+        </div>
+        <h3>Video Library</h3>
+        <p>Expert-led educational content on portfolio construction, client communications, and regulatory compliance for RIAs</p>
+        <a href="#" class="feature-link">Watch Content &rarr;</a>
+      </div>
+      <!-- Card 3 -->
+      <div class="feature-card">
+        <div class="feature-icon">
+          <span class="material-icons-outlined">notifications_active</span>
+        </div>
+        <h3>Real-Time Alerts</h3>
+        <p>Breaking news, regulatory updates, and market-moving events delivered instantly to your dashboard</p>
+        <a href="#" class="feature-link">View Insights &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== RESEARCH REPORT — Dark, 2-Column ===================== -->
+  <section class="report">
+    <img id="report-texture-img" src="Line-Texture.svg" alt="" aria-hidden="true">
+    <div class="report-inner">
+      <div class="report-header">
+        <span class="report-eyebrow">Institutional Research Report</span>
+        <h2 class="report-heading">Essential Reading for Fiduciaries</h2>
+        <p class="report-description">Comprehensive analysis on digital asset portfolio integration with quantitative framework and regulatory guidance</p>
+      </div>
+
+      <div class="research-content">
+
+        <!-- Left Column: Report Cover -->
+        <div class="report-cover">
+          <div class="report-cover-accent"></div>
+          <div class="report-cover-inner">
+            <div>
+              <p class="report-cover-label">CoinDesk Advisors</p>
+              <h3 class="report-cover-title">The Asymmetric Advantage: A Fiduciary's Guide to Digital Asset Allocation in Modern Portfolios</h3>
+              <p class="report-cover-meta">February 2026 &middot; 23 Pages</p>
+            </div>
+            <div>
+              <a href="#" class="report-download-btn">Download the 2026 Report</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column: What You'll Learn -->
+        <div class="report-learn">
+          <h3 class="report-learn-title">What You'll Learn</h3>
+          <div class="report-outcomes">
+
+            <div class="report-outcome">
+              <span class="report-outcome-num">01</span>
+              <div class="report-outcome-content">
+                <p class="report-outcome-title">Portfolio Construction Mathematics</p>
+                <p class="report-outcome-desc">Quantitative analysis of 1%, 3%, and 5% allocations with Sharpe ratio optimization and efficient frontier positioning</p>
+              </div>
+            </div>
+
+            <div class="report-outcome">
+              <span class="report-outcome-num">02</span>
+              <div class="report-outcome-content">
+                <p class="report-outcome-title">Qualified Custody Framework</p>
+                <p class="report-outcome-desc">SEC Rule 206(4)-2 compliance, custodian due diligence criteria, and operational risk controls for institutional allocation</p>
+              </div>
+            </div>
+
+            <div class="report-outcome">
+              <span class="report-outcome-num">03</span>
+              <div class="report-outcome-content">
+                <p class="report-outcome-title">2026 Fiduciary Safe Harbors</p>
+                <p class="report-outcome-desc">Complete regulatory framework including DASH provisions, concentration limits, and IPS documentation templates</p>
+              </div>
+            </div>
+
+            <div class="report-outcome">
+              <span class="report-outcome-num">04</span>
+              <div class="report-outcome-content">
+                <p class="report-outcome-title">Rebalancing Protocols</p>
+                <p class="report-outcome-desc">Systematic rebalancing strategies generating 50+ bps annual alpha through disciplined volatility capture</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ===================== FINAL CTA ===================== -->
+  <section class="final-cta">
+    <h2 class="final-cta-heading">Ready to elevate your digital asset practice?</h2>
+    <p class="final-cta-description">Join leading RIAs who trust CoinDesk Advisors for institutional-grade cryptocurrency intelligence</p>
+    <form class="final-cta-form" onsubmit="return false;">
+      <input type="email" class="final-cta-input" placeholder="Enter your email address" aria-label="Email address">
+      <button type="submit" class="final-cta-btn">Learn more</button>
+    </form>
+  </section>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="footer">
+    <a href="/" class="footer-logo">
+      <svg width="160" height="21" viewBox="0 0 350 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M66.6115 32.0882C62.2231 32.0882 59.4905 28.1237 59.4905 22.6584C59.4905 17.1932 61.7681 13.1852 66.5684 13.1852C69.7156 13.1852 71.7833 15.2286 72.1575 17.9015H79.4858C79.1143 14.5638 77.6228 11.6439 75.057 9.68198C72.9463 8.05381 70.0468 7.05249 66.6115 7.05249C57.7944 7.05249 52.0383 13.7714 52.0383 22.6584C52.0383 31.5455 57.9586 38.1396 66.6518 38.1396C70.8329 38.1396 73.8563 36.97 76.1312 34.7584C78.1585 32.7965 79.4858 30.0856 79.6904 27.1223H72.3621C72.031 30.0015 69.8772 32.0882 66.6088 32.0882H66.6115Z" fill="white"/>
+        <path d="M93.2029 15.5245C86.4131 15.5245 81.8605 20.4063 81.8605 26.8321C81.8605 33.258 86.4131 38.1397 93.2029 38.1397C99.9928 38.1397 104.505 33.258 104.505 26.8321C104.505 20.4063 100.033 15.5245 93.2029 15.5245ZM93.1598 33.2987C90.2199 33.2987 88.688 30.7126 88.688 26.8321C88.688 22.9517 90.2199 20.3222 93.1598 20.3222C96.0998 20.3222 97.672 22.9517 97.672 26.8321C97.672 30.7126 96.0998 33.2987 93.1598 33.2987Z" fill="white"/>
+        <path d="M114.1 13.2488C115.539 11.798 115.539 9.44587 114.1 7.9951C112.661 6.54433 110.327 6.54433 108.888 7.9951C107.448 9.44587 107.448 11.798 108.888 13.2488C110.327 14.6996 112.661 14.6996 114.1 13.2488Z" fill="white"/>
+        <path d="M105.624 20.9135H108.432V37.4719H115.179V16.1077H105.624V20.9135Z" fill="white"/>
+        <path d="M131.726 15.4808C128.786 15.4808 126.759 16.7318 125.184 19.0275H125.06V16.1077H118.561V37.4719H125.308V25.6623C125.308 23.0328 126.799 21.155 129.034 21.155C131.268 21.155 132.345 22.699 132.345 24.9513V37.4692H139.092V23.5755C139.092 18.8186 136.359 15.4808 131.723 15.4808H131.726Z" fill="white"/>
+        <path d="M154.922 7.63562H142.296V37.469H154.467C158.193 37.469 161.174 36.5084 163.492 34.7581C166.803 32.2128 168.626 27.9985 168.626 22.7396C168.626 13.6028 163.12 7.63562 154.922 7.63562ZM153.929 31.2549H149.624V13.8118H154.012C158.608 13.8118 161.217 17.3178 161.217 22.7423C161.217 28.1668 158.732 31.2549 153.932 31.2549H153.929Z" fill="white"/>
+        <path d="M188.632 18.2819C186.809 16.613 184.411 15.6117 181.387 15.6117C174.929 15.6117 170.5 20.4935 170.5 26.8786C170.5 33.2637 174.805 38.2296 181.802 38.2296C184.494 38.2296 186.645 37.5214 188.425 36.2677C190.288 34.9733 191.529 33.1389 191.984 31.2204H185.401C184.823 32.5555 183.662 33.3478 181.883 33.3478C179.11 33.3478 177.535 31.5541 177.123 28.675H192.358C192.398 24.3359 191.157 20.621 188.632 18.2846V18.2819ZM177.166 24.6263C177.621 22.0809 178.945 20.4528 181.514 20.4528C183.708 20.4528 185.28 22.0809 185.531 24.6263H177.168H177.166Z" fill="white"/>
+        <path d="M205.69 24.1128C203.001 23.6108 200.599 23.4046 200.599 21.9012C200.599 20.5661 201.883 19.9393 203.539 19.9393C205.402 19.9393 206.686 20.5227 206.934 22.4439H213.145C212.814 18.2297 209.586 15.6002 203.582 15.6002C198.572 15.6002 194.434 17.9366 194.434 22.4439C194.434 27.4505 198.367 28.4519 202.05 29.0787C204.866 29.5807 207.432 29.787 207.432 31.7082C207.432 33.084 206.148 33.8357 204.121 33.8357C201.886 33.8357 200.478 32.7909 200.23 30.6635H193.855C194.062 35.3797 197.953 38.2588 204.164 38.2588C209.71 38.2588 213.81 35.8383 213.81 31.1655C213.81 25.7003 209.422 24.7397 205.696 24.1128H205.69Z" fill="white"/>
+        <path d="M229.678 24.1181L237.13 16.1075H229.347L223.055 23.3257V7.63562H216.389V37.4717H223.055V30.9211L225.085 28.7502L230.176 37.4717H238L229.678 24.1181Z" fill="white"/>
+        <path d="M22.1847 25.5106C23.6923 25.5106 24.9145 24.2873 24.9145 22.7784C24.9145 21.2694 23.6923 20.0461 22.1847 20.0461C20.677 20.0461 19.4548 21.2694 19.4548 22.7784C19.4548 24.2873 20.677 25.5106 22.1847 25.5106Z" fill="#FFD200"/>
+        <path d="M37.6534 25.5007C39.161 25.5007 40.3832 24.2774 40.3832 22.7685C40.3832 21.2595 39.161 20.0363 37.6534 20.0363C36.1458 20.0363 34.9236 21.2595 34.9236 22.7685C34.9236 24.2774 36.1458 25.5007 37.6534 25.5007Z" fill="#FFD200"/>
+        <path d="M37.7625 40.9834C39.2702 40.9834 40.4924 39.7601 40.4924 38.2511C40.4924 36.7422 39.2702 35.5189 37.7625 35.5189C36.2549 35.5189 35.0327 36.7422 35.0327 38.2511C35.0327 39.7601 36.2549 40.9834 37.7625 40.9834Z" fill="#FFD200"/>
+        <path d="M44.7369 5.70129C44.524 2.68918 42.1169 0.249652 39.125 0.0189953C37.2219 -0.12754 35.4834 0.605134 34.2731 1.85611C33.3539 2.80316 32.1194 3.37301 30.804 3.37301H30.3134C28.9657 3.37301 27.6934 2.79773 26.7473 1.83168C25.6395 0.700111 24.1003 0 22.4022 0C20.704 0 19.1649 0.700111 18.0571 1.82897C17.111 2.79502 15.8387 3.3703 14.491 3.3703H14.0246C12.7119 3.3703 11.437 2.86014 10.5313 1.90495C10.3534 1.71771 10.1593 1.5359 9.95176 1.36766C7.65791 -0.507445 4.29664 -0.439604 2.08096 1.52776C-0.592961 3.89674 -0.689998 8.00514 1.78984 10.4989C1.8141 10.5234 1.83836 10.5478 1.86262 10.5695C2.82221 11.4948 3.34783 12.7892 3.34783 14.1298V14.5884C3.34783 15.9452 2.77639 17.2233 1.8168 18.1785C0.695479 19.2937 4.51458e-05 20.8405 4.51458e-05 22.5528C4.51458e-05 24.2651 0.695479 25.8118 1.8141 26.9244C2.7737 27.8769 3.34244 29.1577 3.34244 30.5145V31.1251C3.34244 32.4493 2.77909 33.6921 1.83836 34.6175C0.652352 35.7871 -0.0646464 37.4396 0.00543611 39.2605C0.129428 42.4517 2.71979 45.0513 5.89237 45.1626C7.71182 45.225 9.36145 44.4869 10.5205 43.2712C11.4343 42.3106 12.6742 41.7353 13.995 41.7353H14.5206C15.8414 41.7353 17.0813 42.3133 17.9951 43.2712C19.2027 44.5412 20.9493 45.2901 22.8631 45.149C25.8632 44.9292 28.2864 42.4815 28.4967 39.4613C28.75 35.863 25.9225 32.8645 22.4022 32.8645C20.7202 32.8645 19.1973 33.551 18.0921 34.6582C17.1487 35.6052 15.8899 36.167 14.5556 36.167H14.0004C12.6688 36.167 11.3804 35.6432 10.4477 34.6853C10.4343 34.6718 10.4181 34.6555 10.4046 34.6419C9.44501 33.6867 8.87357 32.4086 8.87357 31.0518V30.5145C8.87357 29.1577 9.44501 27.8796 10.4046 26.9244C11.5259 25.8091 12.2214 24.2624 12.2214 22.5501C12.2214 20.8378 11.5259 19.291 10.4073 18.1785C9.44771 17.226 8.87896 15.9452 8.87896 14.5884V14.1135C8.87896 12.7648 9.43423 11.4867 10.3911 10.5424C10.4046 10.5288 10.4208 10.5152 10.4343 10.4989C10.4477 10.4827 10.4612 10.4718 10.4747 10.4582C11.4127 9.49491 12.6823 8.93591 14.0219 8.93591H14.4963C15.8441 8.93591 17.1137 9.51119 18.0625 10.4745C19.1703 11.6034 20.7067 12.3008 22.4049 12.3008C24.103 12.3008 25.6395 11.6034 26.7473 10.4745C27.6934 9.51119 28.9657 8.93591 30.3107 8.93591H30.7393C32.0871 8.93591 33.3566 9.50848 34.3027 10.4745C35.4106 11.6007 36.947 12.3008 38.6452 12.3008C42.1655 12.3008 44.993 9.30225 44.7396 5.70129H44.7369Z" fill="#FFD200"/>
+        <path d="M343.534 37.308C339.829 37.308 337.591 35.5277 337.399 32.9535H340.959C341.176 34.1564 342.09 34.83 343.558 34.83C344.905 34.83 345.675 34.2767 345.675 33.3625C345.675 32.2077 344.159 32.0634 342.379 31.7266C340.093 31.2935 337.784 30.7161 337.784 27.733C337.784 25.1107 340.166 23.7394 343.173 23.7394C346.733 23.7394 348.514 25.2791 348.85 27.5165H345.338C345.097 26.6023 344.376 26.1452 343.173 26.1452C342.018 26.1452 341.272 26.6263 341.272 27.4443C341.272 28.4066 342.668 28.5509 344.424 28.8637C346.709 29.2727 349.308 29.8741 349.308 33.0979C349.308 35.8645 346.854 37.308 343.534 37.308Z" fill="#FFD200"/>
+        <path d="M331.982 24.1003V26.3858H332.054C332.872 24.6055 334.027 23.8838 335.615 23.8838C335.976 23.8838 336.24 23.9078 336.409 23.98V27.2759H336.312C336.048 27.2278 335.783 27.2038 335.519 27.2038C333.474 27.1797 332.126 28.4548 332.126 30.9568V36.899H328.349V24.1003H331.982Z" fill="#FFD200"/>
+        <path d="M319.708 37.308C315.618 37.308 312.923 34.3489 312.923 30.5237C312.923 26.6744 315.618 23.7394 319.708 23.7394C323.773 23.7394 326.444 26.6744 326.444 30.5237C326.444 34.3489 323.773 37.308 319.708 37.308ZM319.683 34.5654C321.56 34.5654 322.619 32.9295 322.619 30.5237C322.619 28.0938 321.56 26.4339 319.683 26.4339C317.759 26.4339 316.748 28.0938 316.748 30.5237C316.748 32.9295 317.759 34.5654 319.683 34.5654Z" fill="#FFD200"/>
+        <path d="M305.873 37.308C302.168 37.308 299.931 35.5277 299.738 32.9535H303.299C303.515 34.1564 304.429 34.83 305.897 34.83C307.244 34.83 308.014 34.2767 308.014 33.3625C308.014 32.2077 306.498 32.0634 304.718 31.7266C302.433 31.2935 300.123 30.7161 300.123 27.733C300.123 25.1107 302.505 23.7394 305.512 23.7394C309.073 23.7394 310.853 25.2791 311.19 27.5165H307.677C307.437 26.6023 306.715 26.1452 305.512 26.1452C304.357 26.1452 303.611 26.6263 303.611 27.4443C303.611 28.4066 305.007 28.5509 306.763 28.8637C309.049 29.2727 311.647 29.8741 311.647 33.0979C311.647 35.8645 309.193 37.308 305.873 37.308Z" fill="#FFD200"/>
+        <path d="M294.259 22.2959V19H298.084V22.2959H294.259ZM294.283 36.899V24.1002H298.06V36.899H294.283Z" fill="#FFD200"/>
+        <path d="M284.375 36.8991L279.949 24.1003H283.846L285.41 29.2487C285.939 30.9568 286.42 33.7235 286.42 33.7235H286.493C286.493 33.7235 286.974 30.9568 287.503 29.2487L289.115 24.1003H292.916L288.441 36.8991H284.375Z" fill="#FFD200"/>
+        <path d="M270.998 37.308C267.678 37.308 265.512 34.7338 265.512 30.4996C265.512 26.5782 267.726 23.7394 271.046 23.7394C272.802 23.7394 273.981 24.5573 274.847 25.8805H274.895C274.847 25.0866 274.799 24.004 274.799 22.9214V19H278.576V36.899H274.943V35.0225H274.895C274.149 36.5862 272.73 37.308 270.998 37.308ZM272.008 34.2767C273.836 34.2767 274.919 32.737 274.919 30.4996C274.919 28.2382 273.981 26.6023 272.032 26.6023C270.252 26.6023 269.362 28.1901 269.362 30.4756C269.362 32.7851 270.252 34.2767 272.008 34.2767Z" fill="#FFD200"/>
+        <path d="M248 36.899L254.447 19H258.706L265.177 36.899H260.847L259.716 33.4828H253.221L252.114 36.899H248ZM255.29 27.2037L254.183 30.5477H258.778L257.695 27.2037C256.925 24.7498 256.541 22.4403 256.541 22.4403H256.492C256.492 22.4403 255.867 25.4475 255.29 27.2037Z" fill="#FFD200"/>
+      </svg>
+    </a>
+    <span class="footer-copy">&copy; 2026 CoinDesk Advisors. Exclusively for Registered Investment Advisors.</span>
+  </footer>
+
+
+</body>
+</html>
