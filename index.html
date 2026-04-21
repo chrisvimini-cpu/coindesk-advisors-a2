@@ -59,6 +59,7 @@
       /* Brand */
       --color-brand: #FFD200;
       --color-brand-hover: #F3C00B;
+      --yellow: #F3C00B;
       --color-surface-brand: #FFD200;
 
       /* Backgrounds */
@@ -160,18 +161,177 @@
     /* -------------------------
        NAV
     ------------------------- */
-    .nav {
-      width: 100%;
-      height: var(--nav-height);
-      background-color: var(--color-nav-bg);
+    .global-nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: #fff;
+      border-bottom: 1px solid var(--color-border);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+    .nav-main {
       display: flex;
       align-items: center;
-      padding: 0 max(var(--s8), calc(50% - 610px));
+      gap: 24px;
+      width: 100%;
+      padding: 0 24px;
+      height: 72px;
     }
-
+    .nav-logo-group {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      flex-shrink: 0;
+    }
     .nav-logo {
       display: flex;
       align-items: center;
+      gap: 6px;
+      text-decoration: none;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2px;
+      height: 72px;
+    }
+    .nav-links a {
+      padding: 12px;
+      font-family: var(--font-sans);
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--color-text);
+      text-decoration: none;
+      white-space: nowrap;
+      border-radius: 4px;
+      line-height: 22px;
+    }
+    .nav-links a:hover { background: var(--color-surface); }
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-left: auto;
+      flex-shrink: 0;
+    }
+    .nav-search {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      background: var(--color-surface);
+      border-radius: 999px;
+      padding: 8px 8px 8px 16px;
+      cursor: pointer;
+    }
+    .nav-search-text {
+      font-family: var(--font-sans);
+      font-size: 14px;
+      color: var(--color-text-subtle);
+      white-space: nowrap;
+    }
+    .nav-search-key {
+      background: var(--color-gray-n1);
+      border-radius: 100px;
+      width: 24px;
+      height: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-mono);
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--color-text-subtle);
+    }
+    .nav-lang {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      padding: 8px 12px;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--color-text);
+      cursor: pointer;
+    }
+    .nav-divider { width: 1px; height: 40px; background: var(--color-border); flex-shrink: 0; }
+    .nav-account {
+      background: var(--color-surface);
+      border-radius: 999px;
+      padding: 8px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      border: none;
+      cursor: pointer;
+    }
+    .nav-cta {
+      background: var(--yellow);
+      color: #000;
+      font-family: var(--font-sans);
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 24px;
+      padding: 8px 16px;
+      border-radius: 4px;
+      border: none;
+      white-space: nowrap;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .nav-cta:hover { background: #d9ac0a; }
+
+    /* Ticker */
+    .ticker-bar {
+      border-top: 1px solid var(--color-border);
+      height: 32px;
+      overflow: hidden;
+    }
+    .ticker-track {
+      display: flex;
+      align-items: center;
+      height: 32px;
+      width: max-content;
+      animation: ticker-scroll 60s linear infinite;
+    }
+    .ticker-track:hover { animation-play-state: paused; }
+    @keyframes ticker-scroll {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+    .ticker-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 0 12px;
+      height: 32px;
+      flex-shrink: 0;
+    }
+    .ticker-coin { display: flex; align-items: center; gap: 4px; }
+    .ticker-symbol {
+      font-family: var(--font-sans);
+      font-size: 10px;
+      font-weight: 500;
+      color: var(--color-text-subtle);
+      letter-spacing: 0.4px;
+    }
+    .ticker-price {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--color-text-subtle);
+    }
+    .ticker-pct {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.4px;
+    }
+    .ticker-pct.pos { color: #218410; }
+    .ticker-pct.neg { color: #bb020a; }
+
+    @media (max-width: 900px) {
+      .nav-links  { display: none; }
+      .nav-search { display: none; }
+      .nav-lang   { display: none; }
+      .nav-divider { display: none; }
+      .nav-account { display: none; }
     }
 
     /* -------------------------
@@ -757,10 +917,6 @@
        RESPONSIVE (768px)
     ------------------------- */
     @media (max-width: 768px) {
-      .nav {
-        padding: 0 var(--s5);
-      }
-
       .hero {
         padding: 60px var(--s5) 50px;
       }
@@ -860,33 +1016,100 @@
 <body>
 
   <!-- ===================== NAV ===================== -->
-  <nav class="nav">
-    <a href="/" class="nav-logo">
-      <svg width="170" height="22" viewBox="0 0 350 46" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M66.6115 32.0882C62.2231 32.0882 59.4905 28.1237 59.4905 22.6584C59.4905 17.1932 61.7681 13.1852 66.5684 13.1852C69.7156 13.1852 71.7833 15.2286 72.1575 17.9015H79.4858C79.1143 14.5638 77.6228 11.6439 75.057 9.68198C72.9463 8.05381 70.0468 7.05249 66.6115 7.05249C57.7944 7.05249 52.0383 13.7714 52.0383 22.6584C52.0383 31.5455 57.9586 38.1396 66.6518 38.1396C70.8329 38.1396 73.8563 36.97 76.1312 34.7584C78.1585 32.7965 79.4858 30.0856 79.6904 27.1223H72.3621C72.031 30.0015 69.8772 32.0882 66.6088 32.0882H66.6115Z" fill="white"/>
-        <path d="M93.2029 15.5245C86.4131 15.5245 81.8605 20.4063 81.8605 26.8321C81.8605 33.258 86.4131 38.1397 93.2029 38.1397C99.9928 38.1397 104.505 33.258 104.505 26.8321C104.505 20.4063 100.033 15.5245 93.2029 15.5245ZM93.1598 33.2987C90.2199 33.2987 88.688 30.7126 88.688 26.8321C88.688 22.9517 90.2199 20.3222 93.1598 20.3222C96.0998 20.3222 97.672 22.9517 97.672 26.8321C97.672 30.7126 96.0998 33.2987 93.1598 33.2987Z" fill="white"/>
-        <path d="M114.1 13.2488C115.539 11.798 115.539 9.44587 114.1 7.9951C112.661 6.54433 110.327 6.54433 108.888 7.9951C107.448 9.44587 107.448 11.798 108.888 13.2488C110.327 14.6996 112.661 14.6996 114.1 13.2488Z" fill="white"/>
-        <path d="M105.624 20.9135H108.432V37.4719H115.179V16.1077H105.624V20.9135Z" fill="white"/>
-        <path d="M131.726 15.4808C128.786 15.4808 126.759 16.7318 125.184 19.0275H125.06V16.1077H118.561V37.4719H125.308V25.6623C125.308 23.0328 126.799 21.155 129.034 21.155C131.268 21.155 132.345 22.699 132.345 24.9513V37.4692H139.092V23.5755C139.092 18.8186 136.359 15.4808 131.723 15.4808H131.726Z" fill="white"/>
-        <path d="M154.922 7.63562H142.296V37.469H154.467C158.193 37.469 161.174 36.5084 163.492 34.7581C166.803 32.2128 168.626 27.9985 168.626 22.7396C168.626 13.6028 163.12 7.63562 154.922 7.63562ZM153.929 31.2549H149.624V13.8118H154.012C158.608 13.8118 161.217 17.3178 161.217 22.7423C161.217 28.1668 158.732 31.2549 153.932 31.2549H153.929Z" fill="white"/>
-        <path d="M188.632 18.2819C186.809 16.613 184.411 15.6117 181.387 15.6117C174.929 15.6117 170.5 20.4935 170.5 26.8786C170.5 33.2637 174.805 38.2296 181.802 38.2296C184.494 38.2296 186.645 37.5214 188.425 36.2677C190.288 34.9733 191.529 33.1389 191.984 31.2204H185.401C184.823 32.5555 183.662 33.3478 181.883 33.3478C179.11 33.3478 177.535 31.5541 177.123 28.675H192.358C192.398 24.3359 191.157 20.621 188.632 18.2846V18.2819ZM177.166 24.6263C177.621 22.0809 178.945 20.4528 181.514 20.4528C183.708 20.4528 185.28 22.0809 185.531 24.6263H177.168H177.166Z" fill="white"/>
-        <path d="M205.69 24.1128C203.001 23.6108 200.599 23.4046 200.599 21.9012C200.599 20.5661 201.883 19.9393 203.539 19.9393C205.402 19.9393 206.686 20.5227 206.934 22.4439H213.145C212.814 18.2297 209.586 15.6002 203.582 15.6002C198.572 15.6002 194.434 17.9366 194.434 22.4439C194.434 27.4505 198.367 28.4519 202.05 29.0787C204.866 29.5807 207.432 29.787 207.432 31.7082C207.432 33.084 206.148 33.8357 204.121 33.8357C201.886 33.8357 200.478 32.7909 200.23 30.6635H193.855C194.062 35.3797 197.953 38.2588 204.164 38.2588C209.71 38.2588 213.81 35.8383 213.81 31.1655C213.81 25.7003 209.422 24.7397 205.696 24.1128H205.69Z" fill="white"/>
-        <path d="M229.678 24.1181L237.13 16.1075H229.347L223.055 23.3257V7.63562H216.389V37.4717H223.055V30.9211L225.085 28.7502L230.176 37.4717H238L229.678 24.1181Z" fill="white"/>
-        <path d="M22.1847 25.5106C23.6923 25.5106 24.9145 24.2873 24.9145 22.7784C24.9145 21.2694 23.6923 20.0461 22.1847 20.0461C20.677 20.0461 19.4548 21.2694 19.4548 22.7784C19.4548 24.2873 20.677 25.5106 22.1847 25.5106Z" fill="#FFD200"/>
-        <path d="M37.6534 25.5007C39.161 25.5007 40.3832 24.2774 40.3832 22.7685C40.3832 21.2595 39.161 20.0363 37.6534 20.0363C36.1458 20.0363 34.9236 21.2595 34.9236 22.7685C34.9236 24.2774 36.1458 25.5007 37.6534 25.5007Z" fill="#FFD200"/>
-        <path d="M37.7625 40.9834C39.2702 40.9834 40.4924 39.7601 40.4924 38.2511C40.4924 36.7422 39.2702 35.5189 37.7625 35.5189C36.2549 35.5189 35.0327 36.7422 35.0327 38.2511C35.0327 39.7601 36.2549 40.9834 37.7625 40.9834Z" fill="#FFD200"/>
-        <path d="M44.7369 5.70129C44.524 2.68918 42.1169 0.249652 39.125 0.0189953C37.2219 -0.12754 35.4834 0.605134 34.2731 1.85611C33.3539 2.80316 32.1194 3.37301 30.804 3.37301H30.3134C28.9657 3.37301 27.6934 2.79773 26.7473 1.83168C25.6395 0.700111 24.1003 0 22.4022 0C20.704 0 19.1649 0.700111 18.0571 1.82897C17.111 2.79502 15.8387 3.3703 14.491 3.3703H14.0246C12.7119 3.3703 11.437 2.86014 10.5313 1.90495C10.3534 1.71771 10.1593 1.5359 9.95176 1.36766C7.65791 -0.507445 4.29664 -0.439604 2.08096 1.52776C-0.592961 3.89674 -0.689998 8.00514 1.78984 10.4989C1.8141 10.5234 1.83836 10.5478 1.86262 10.5695C2.82221 11.4948 3.34783 12.7892 3.34783 14.1298V14.5884C3.34783 15.9452 2.77639 17.2233 1.8168 18.1785C0.695479 19.2937 4.51458e-05 20.8405 4.51458e-05 22.5528C4.51458e-05 24.2651 0.695479 25.8118 1.8141 26.9244C2.7737 27.8769 3.34244 29.1577 3.34244 30.5145V31.1251C3.34244 32.4493 2.77909 33.6921 1.83836 34.6175C0.652352 35.7871 -0.0646464 37.4396 0.00543611 39.2605C0.129428 42.4517 2.71979 45.0513 5.89237 45.1626C7.71182 45.225 9.36145 44.4869 10.5205 43.2712C11.4343 42.3106 12.6742 41.7353 13.995 41.7353H14.5206C15.8414 41.7353 17.0813 42.3133 17.9951 43.2712C19.2027 44.5412 20.9493 45.2901 22.8631 45.149C25.8632 44.9292 28.2864 42.4815 28.4967 39.4613C28.75 35.863 25.9225 32.8645 22.4022 32.8645C20.7202 32.8645 19.1973 33.551 18.0921 34.6582C17.1487 35.6052 15.8899 36.167 14.5556 36.167H14.0004C12.6688 36.167 11.3804 35.6432 10.4477 34.6853C10.4343 34.6718 10.4181 34.6555 10.4046 34.6419C9.44501 33.6867 8.87357 32.4086 8.87357 31.0518V30.5145C8.87357 29.1577 9.44501 27.8796 10.4046 26.9244C11.5259 25.8091 12.2214 24.2624 12.2214 22.5501C12.2214 20.8378 11.5259 19.291 10.4073 18.1785C9.44771 17.226 8.87896 15.9452 8.87896 14.5884V14.1135C8.87896 12.7648 9.43423 11.4867 10.3911 10.5424C10.4046 10.5288 10.4208 10.5152 10.4343 10.4989C10.4477 10.4827 10.4612 10.4718 10.4747 10.4582C11.4127 9.49491 12.6823 8.93591 14.0219 8.93591H14.4963C15.8441 8.93591 17.1137 9.51119 18.0625 10.4745C19.1703 11.6034 20.7067 12.3008 22.4049 12.3008C24.103 12.3008 25.6395 11.6034 26.7473 10.4745C27.6934 9.51119 28.9657 8.93591 30.3107 8.93591H30.7393C32.0871 8.93591 33.3566 9.50848 34.3027 10.4745C35.4106 11.6007 36.947 12.3008 38.6452 12.3008C42.1655 12.3008 44.993 9.30225 44.7396 5.70129H44.7369Z" fill="#FFD200"/>
-        <path d="M343.534 37.308C339.829 37.308 337.591 35.5277 337.399 32.9535H340.959C341.176 34.1564 342.09 34.83 343.558 34.83C344.905 34.83 345.675 34.2767 345.675 33.3625C345.675 32.2077 344.159 32.0634 342.379 31.7266C340.093 31.2935 337.784 30.7161 337.784 27.733C337.784 25.1107 340.166 23.7394 343.173 23.7394C346.733 23.7394 348.514 25.2791 348.85 27.5165H345.338C345.097 26.6023 344.376 26.1452 343.173 26.1452C342.018 26.1452 341.272 26.6263 341.272 27.4443C341.272 28.4066 342.668 28.5509 344.424 28.8637C346.709 29.2727 349.308 29.8741 349.308 33.0979C349.308 35.8645 346.854 37.308 343.534 37.308Z" fill="#FFD200"/>
-        <path d="M331.982 24.1003V26.3858H332.054C332.872 24.6055 334.027 23.8838 335.615 23.8838C335.976 23.8838 336.24 23.9078 336.409 23.98V27.2759H336.312C336.048 27.2278 335.783 27.2038 335.519 27.2038C333.474 27.1797 332.126 28.4548 332.126 30.9568V36.899H328.349V24.1003H331.982Z" fill="#FFD200"/>
-        <path d="M319.708 37.308C315.618 37.308 312.923 34.3489 312.923 30.5237C312.923 26.6744 315.618 23.7394 319.708 23.7394C323.773 23.7394 326.444 26.6744 326.444 30.5237C326.444 34.3489 323.773 37.308 319.708 37.308ZM319.683 34.5654C321.56 34.5654 322.619 32.9295 322.619 30.5237C322.619 28.0938 321.56 26.4339 319.683 26.4339C317.759 26.4339 316.748 28.0938 316.748 30.5237C316.748 32.9295 317.759 34.5654 319.683 34.5654Z" fill="#FFD200"/>
-        <path d="M305.873 37.308C302.168 37.308 299.931 35.5277 299.738 32.9535H303.299C303.515 34.1564 304.429 34.83 305.897 34.83C307.244 34.83 308.014 34.2767 308.014 33.3625C308.014 32.2077 306.498 32.0634 304.718 31.7266C302.433 31.2935 300.123 30.7161 300.123 27.733C300.123 25.1107 302.505 23.7394 305.512 23.7394C309.073 23.7394 310.853 25.2791 311.19 27.5165H307.677C307.437 26.6023 306.715 26.1452 305.512 26.1452C304.357 26.1452 303.611 26.6263 303.611 27.4443C303.611 28.4066 305.007 28.5509 306.763 28.8637C309.049 29.2727 311.647 29.8741 311.647 33.0979C311.647 35.8645 309.193 37.308 305.873 37.308Z" fill="#FFD200"/>
-        <path d="M294.259 22.2959V19H298.084V22.2959H294.259ZM294.283 36.899V24.1002H298.06V36.899H294.283Z" fill="#FFD200"/>
-        <path d="M284.375 36.8991L279.949 24.1003H283.846L285.41 29.2487C285.939 30.9568 286.42 33.7235 286.42 33.7235H286.493C286.493 33.7235 286.974 30.9568 287.503 29.2487L289.115 24.1003H292.916L288.441 36.8991H284.375Z" fill="#FFD200"/>
-        <path d="M270.998 37.308C267.678 37.308 265.512 34.7338 265.512 30.4996C265.512 26.5782 267.726 23.7394 271.046 23.7394C272.802 23.7394 273.981 24.5573 274.847 25.8805H274.895C274.847 25.0866 274.799 24.004 274.799 22.9214V19H278.576V36.899H274.943V35.0225H274.895C274.149 36.5862 272.73 37.308 270.998 37.308ZM272.008 34.2767C273.836 34.2767 274.919 32.737 274.919 30.4996C274.919 28.2382 273.981 26.6023 272.032 26.6023C270.252 26.6023 269.362 28.1901 269.362 30.4756C269.362 32.7851 270.252 34.2767 272.008 34.2767Z" fill="#FFD200"/>
-        <path d="M248 36.899L254.447 19H258.706L265.177 36.899H260.847L259.716 33.4828H253.221L252.114 36.899H248ZM255.29 27.2037L254.183 30.5477H258.778L257.695 27.2037C256.925 24.7498 256.541 22.4403 256.541 22.4403H256.492C256.492 22.4403 255.867 25.4475 255.29 27.2037Z" fill="#FFD200"/>
-      </svg>
-    </a>
-  </nav>
+  <header class="global-nav">
+    <nav class="nav-main">
+      <div class="nav-logo-group">
+        <a href="/" class="nav-logo">
+          <svg width="32" height="32" viewBox="0 0 31.5818 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M16.2703 18.4007C17.3358 18.4007 18.1995 17.5287 18.1995 16.4529C18.1995 15.3772 17.3358 14.5051 16.2703 14.5051C15.2048 14.5051 14.3411 15.3772 14.3411 16.4529C14.3411 17.5287 15.2048 18.4007 16.2703 18.4007Z" fill="#F3C00B"/>
+            <path d="M27.8082 18.4008C28.8737 18.4008 29.7375 17.5287 29.7375 16.4529C29.7375 15.3772 28.8737 14.5051 27.8082 14.5051C26.7428 14.5051 25.879 15.3772 25.879 16.4529C25.879 17.5287 26.7428 18.4008 27.8082 18.4008Z" fill="#F3C00B"/>
+            <path d="M27.8082 30.0695C28.8737 30.0695 29.7375 29.1974 29.7375 28.1216C29.7375 27.0459 28.8737 26.1738 27.8082 26.1738C26.7428 26.1738 25.879 27.0459 25.879 28.1216C25.879 29.1974 26.7428 30.0695 27.8082 30.0695Z" fill="#F3C00B"/>
+            <path d="M31.5715 4.02893C31.4192 1.89521 29.7247 0.165167 27.6113 0.0113854C26.2595 -0.0847282 25.041 0.434285 24.1843 1.31853C23.5369 1.99133 22.6611 2.395 21.7282 2.395H21.3855C20.4335 2.395 19.5387 1.99133 18.8723 1.29931C18.0917 0.491953 17.0065 0.0113854 15.807 0.0113854C14.6075 0.0113854 13.5223 0.511176 12.7417 1.29931C12.0753 1.99133 11.1805 2.395 10.2285 2.395H9.90486C8.97194 2.395 8.0771 2.02977 7.42977 1.35698C7.29649 1.22242 7.16322 1.08786 7.02995 0.972522C5.41161 -0.353846 3.03171 -0.315401 1.4705 1.08786C-0.41438 2.76024 -0.490536 5.68209 1.26107 7.45058C1.28011 7.4698 1.29915 7.48903 1.31819 7.50825C2.0036 8.16182 2.36534 9.08451 2.36534 10.0264V10.3532C2.36534 11.3143 1.96552 12.2178 1.28011 12.8906C0.480462 13.6787 0.0044828 14.7744 0.0044828 15.9855C0.0044828 17.1965 0.499501 18.2922 1.28011 19.0803C1.96552 19.7531 2.36534 20.6566 2.36534 21.6177V22.0599C2.36534 23.0018 1.96552 23.886 1.29915 24.5396C0.461423 25.3662 -0.0526348 26.5387 0.0044828 27.8267C0.0996788 30.095 1.92744 31.9211 4.15503 31.998C5.44969 32.0364 6.61108 31.5174 7.42977 30.6524C8.0771 29.9796 8.9529 29.5567 9.88582 29.5567H10.2476C11.1805 29.5567 12.0563 29.9604 12.7036 30.6524C13.5604 31.5559 14.7979 32.0749 16.1497 31.9788C18.2631 31.825 19.9766 30.095 20.1289 27.942C20.3003 25.3854 18.3202 23.2709 15.8261 23.2709C14.6456 23.2709 13.5604 23.7515 12.7798 24.5396C12.1134 25.2124 11.2186 25.6161 10.2856 25.6161H9.88582C8.9529 25.6161 8.03902 25.2508 7.37265 24.5588C7.35361 24.5396 7.35361 24.5396 7.33457 24.5204C6.64916 23.8476 6.24934 22.9441 6.24934 21.983V21.5985C6.24934 20.6374 6.64916 19.7339 7.33457 19.0611C8.13422 18.273 8.6102 17.1773 8.6102 15.9662C8.6102 14.7552 8.11518 13.6595 7.33457 12.8714C6.64916 12.1986 6.24934 11.2951 6.24934 10.334V9.98798C6.24934 9.02684 6.64916 8.12338 7.31553 7.45058C7.33457 7.43136 7.33457 7.43136 7.35361 7.41214C7.37265 7.39291 7.37265 7.39291 7.39169 7.37369C8.05806 6.70089 8.9529 6.29722 9.90486 6.29722H10.2476C11.1995 6.29722 12.0944 6.70089 12.7607 7.39291C13.5413 8.20027 14.6266 8.68083 15.8261 8.68083C17.0255 8.68083 18.1108 8.18104 18.8914 7.39291C19.5577 6.70089 20.4526 6.29722 21.4045 6.29722H21.7092C22.6611 6.29722 23.556 6.70089 24.2223 7.39291C25.0029 8.20027 26.0882 8.68083 27.2876 8.68083C29.7627 8.70006 31.7428 6.58556 31.5715 4.02893Z" fill="#F3C00B"/>
+          </svg>
+          <svg height="23" viewBox="0 0 131.504 23.2851" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M10.3002 18.9217C7.19682 18.9217 5.27387 16.1152 5.27387 12.2322C5.27387 8.38766 6.8922 5.52348 10.2812 5.52348C12.5088 5.52348 13.9748 6.96518 14.2413 8.86823H19.42C19.1534 6.50384 18.1063 4.42778 16.2785 3.04375C14.7935 1.89038 12.7372 1.17914 10.3002 1.17914C4.05536 1.17914 3.8147e-06 5.94638 3.8147e-06 12.2322C3.8147e-06 18.5565 4.18863 23.1892 10.3383 23.1892C13.2894 23.1892 15.4408 22.3626 17.0401 20.7863C18.468 19.4023 19.42 17.48 19.5533 15.3847H14.3746C14.1461 17.4416 12.623 18.9217 10.3002 18.9217Z" fill="#262626"/>
+            <path d="M29.1108 7.19562C24.313 7.19562 21.0953 10.6557 21.0953 15.2115C21.0953 19.7673 24.313 23.2274 29.1108 23.2274C33.9468 23.2274 37.1073 19.7673 37.1073 15.2115C37.1073 10.6557 33.9468 7.19562 29.1108 7.19562ZM29.0918 19.7865C27.0165 19.7865 25.9313 17.9603 25.9313 15.2115C25.9313 12.4626 27.0165 10.598 29.0918 10.598C31.1671 10.598 32.2904 12.4626 32.2904 15.2115C32.2713 17.9603 31.1671 19.7865 29.0918 19.7865Z" fill="#262626"/>
+            <path d="M43.8818 5.58653C44.9004 4.55808 44.9004 2.89065 43.8818 1.86221C42.8631 0.833767 41.2116 0.833769 40.193 1.86221C39.1744 2.89065 39.1744 4.55808 40.193 5.58652C41.2116 6.61496 42.8631 6.61497 43.8818 5.58653Z" fill="#262626"/>
+            <path d="M37.8879 11.0017H39.8871V22.7468H44.6469V7.5993H37.8879V11.0017Z" fill="#262626"/>
+            <path d="M56.3562 7.15704C54.2809 7.15704 52.8339 8.04129 51.7297 9.67522H51.6345V7.59917H47.046V22.7275H51.8249V14.3656C51.8249 12.501 52.872 11.1746 54.4523 11.1746C56.0135 11.1746 56.7941 12.2703 56.7941 13.8658V22.7275H61.5729V12.8854C61.5729 9.52144 59.6309 7.15704 56.3562 7.15704Z" fill="#262626"/>
+            <path d="M72.7675 1.60162H63.8381V22.7274H72.4439C75.0713 22.7274 77.1846 22.0546 78.822 20.8051C81.1638 18.9982 82.4585 16.0187 82.4585 12.2895C82.4585 5.83062 78.5554 1.60162 72.7675 1.60162ZM72.0631 18.3446H69.0168V5.9844H72.1202C75.3759 5.9844 77.2227 8.46414 77.2227 12.3087C77.2036 16.1725 75.452 18.3446 72.0631 18.3446Z" fill="#262626"/>
+            <path d="M96.605 9.15635C95.3103 7.98376 93.6159 7.27252 91.4835 7.27252C86.9141 7.27252 83.7916 10.7326 83.7916 15.25C83.7916 19.825 86.8379 23.2851 91.7881 23.2851C93.692 23.2851 95.2151 22.7853 96.4717 21.901C97.7854 20.9783 98.6612 19.6904 98.9849 18.3256H94.3393C93.9205 19.2675 93.1018 19.825 91.8452 19.825C89.8842 19.825 88.7799 18.5563 88.4753 16.5187H99.2515C99.2705 13.4238 98.3947 10.8095 96.605 9.15635ZM88.4943 13.6352C88.818 11.8283 89.7509 10.6749 91.5596 10.6749C93.1018 10.6749 94.2251 11.8283 94.3965 13.6352H88.4943Z" fill="#262626"/>
+            <path d="M108.657 13.2701C106.753 12.9241 105.058 12.7703 105.058 11.713C105.058 10.7711 105.972 10.329 107.134 10.329C108.447 10.329 109.361 10.7519 109.532 12.0975H113.931C113.702 9.11796 111.417 7.25336 107.172 7.25336C103.63 7.25336 100.698 8.90651 100.698 12.0975C100.698 15.6537 103.478 16.3457 106.086 16.7878C108.085 17.1338 109.894 17.2876 109.894 18.6524C109.894 19.6328 108.98 20.1518 107.552 20.1518C105.972 20.1518 104.982 19.4213 104.792 17.9027H100.279C100.432 21.2475 103.173 23.2851 107.571 23.2851C111.494 23.2851 114.387 21.5743 114.387 18.268C114.406 14.4042 111.303 13.7122 108.657 13.2701Z" fill="#262626"/>
+            <path d="M125.621 13.289L130.895 7.59911H125.392L120.937 12.7124V1.60162H116.234V22.7466H120.937V18.0947L122.384 16.5569L125.983 22.7466H131.504L125.621 13.289Z" fill="#262626"/>
+          </svg>
+        </a>
+        <div class="nav-links">
+          <a href="#">News</a>
+          <a href="#">Video</a>
+          <a href="#">Prices</a>
+          <a href="#">Research</a>
+          <a href="#">Consensus 2026</a>
+          <a href="#">Data &amp; Indices</a>
+          <a href="#">Sponsored</a>
+        </div>
+      </div>
+      <div class="nav-right">
+        <div class="nav-search">
+          <svg width="20" height="20" fill="none" viewBox="0 0 24 24">
+            <circle cx="11" cy="11" r="7" stroke="#676767" stroke-width="2"/>
+            <path d="M17 17l3 3" stroke="#676767" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          <span class="nav-search-text">Search</span>
+          <div class="nav-search-key">/</div>
+        </div>
+        <div class="nav-lang">
+          <svg width="20" height="20" fill="none" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="9" stroke="#676767" stroke-width="1.5"/>
+            <path d="M12 3c-2.5 3-4 5.5-4 9s1.5 6 4 9M12 3c2.5 3 4 5.5 4 9s-1.5 6-4 9M3 12h18" stroke="#676767" stroke-width="1.5"/>
+          </svg>
+          EN
+        </div>
+        <div class="nav-divider"></div>
+        <button class="nav-account" aria-label="Account">
+          <svg width="24" height="24" fill="none" viewBox="0 0 24 24">
+            <circle cx="12" cy="8" r="4" stroke="#262626" stroke-width="1.5"/>
+            <path d="M4 20c0-4 3.58-7 8-7s8 3 8 7" stroke="#262626" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          <svg width="24" height="24" fill="none" viewBox="0 0 24 24">
+            <path d="M7 10l5 5 5-5" stroke="#262626" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <a class="nav-cta" href="#">Sign Up</a>
+      </div>
+    </nav>
+    <div class="ticker-bar">
+      <div class="ticker-track">
+        <div class="ticker-item"><div class="ticker-coin"><svg width="16" height="16" viewBox="0 0 16 16"><circle cx="8" cy="8" r="8" fill="#F7931A"/><text x="8" y="12" text-anchor="middle" font-size="8" font-weight="700" fill="white">&#8383;</text></svg><span class="ticker-symbol">BTC</span></div><span class="ticker-price">$103,539.87</span><span class="ticker-pct pos">&#9650; 3.42%</span></div>
+        <div class="ticker-item"><div class="ticker-coin"><svg width="16" height="16" viewBox="0 0 16 16"><circle cx="8" cy="8" r="8" fill="#627EEA"/><text x="8" y="12" text-anchor="middle" font-size="8" font-weight="700" fill="white">&#926;</text></svg><span class="ticker-symbol">ETH</span></div><span class="ticker-price">$2,239.87</span><span class="ticker-pct neg">&#9660; 3.42%</span></div>
+        <div class="ticker-item"><div class="ticker-coin"><svg width="16" height="16" viewBox="0 0 16 16"><circle cx="8" cy="8" r="8" fill="#000"/><text x="8" y="11" text-anchor="middle" font-size="6" font-weight="700" fill="white">XLM</text></svg><span class="ticker-symbol">XLM</span></div><span class="ticker-price">$0.3066</span><span class="ticker-pct neg">&#9660; 0.42%</span></div>
+        <div class="ticker-item"><div class="ticker-coin"><svg width="16" height="16" viewBox="0 0 16 16"><circle cx="8" cy="8" r="8" fill="#2A5ADA"/><text x="8" y="11" text-anchor="middle" font-size="6" font-weight="700" fill="white">LINK</text></svg><span class="ticker-symbol">LINK</span></div><span class="ticker-price">$16.87</span><span class="ticker-pct neg">&#9660; 0.42%</span></div>
+        <div class="ticker-item"><div class="ticker-coin"><svg width="16" height="16" viewBox="0 0 16 16"><circle cx="8" cy="8" r="8" fill="#C3A634"/><text x="8" y="11" text-anchor="middle" font-size="6" font-weight="700" fill="white">DOGE</text></svg><span class="ticker-symbol">DOGE</span></div><span class="ticker-price">$0.2291</span><span class="ticker-pct neg">&#9660; 1.23%</span></div>
+        <div class="ticker-item"><div class="ticker-coin"><svg width="16" height="16" viewBox="0 0 16 16"><circle cx="8" cy="8" r="8" fill="#0D1E2D"/><text x="8" y="11" text-anchor="middle" font-size="6" font-weight="700" fill="white">ADA</text></svg><span class="ticker-symbol">ADA</span></div><span class="ticker-price">$0.8047</span><span class="ticker-pct pos">&#9650; 0.42%</span></div>
+        <div class="ticker-item"><div class="ticker-coin"><svg width="16" height="16" viewBox="0 0 16 16"><circle cx="8" cy="8" r="8" fill="#8247E5"/><text x="8" y="11" text-anchor="middle" font-size="6" font-weight="700" fill="white">MATIC</text></svg><span class="ticker-symbol">MATIC</span></div><span class="ticker-price">$0.2486</span><span class="ticker-pct neg">&#9660; 4.11%</span></div>
+        <div class="ticker-item"><div class="ticker-coin"><svg width="16" height="16" viewBox="0 0 16 16"><circle cx="8" cy="8" r="8" fill="#E6007A"/><text x="8" y="11" text-anchor="middle" font-size="6" font-weight="700" fill="white">DOT</text></svg><span class="ticker-symbol">DOT</span></div><span class="ticker-price">$5.0296</span><span class="ticker-pct neg">&#9660; 1.45%</span></div>
+        <div class="ticker-item"><div class="ticker-coin"><svg width="16" height="16" viewBox="0 0 16 16"><circle cx="8" cy="8" r="8" fill="#E84142"/><text x="8" y="11" text-anchor="middle" font-size="6" font-weight="700" fill="white">AVAX</text></svg><span class="ticker-symbol">AVAX</span></div><span class="ticker-price">$35.12</span><span class="ticker-pct pos">&#9650; 1.87%</span></div>
+        <div class="ticker-item"><div class="ticker-coin"><svg width="16" height="16" viewBox="0 0 16 16"><circle cx="8" cy="8" r="8" fill="#9945FF"/><text x="8" y="11" text-anchor="middle" font-size="6" font-weight="700" fill="white">SOL</text></svg><span class="ticker-symbol">SOL</span></div><span class="ticker-price">$148.22</span><span class="ticker-pct neg">&#9660; 2.15%</span></div>
+        <div class="ticker-item"><div class="ticker-coin"><svg width="16" height="16" viewBox="0 0 16 16"><circle cx="8" cy="8" r="8" fill="#26A17B"/><text x="8" y="11" text-anchor="middle" font-size="6" font-weight="700" fill="white">USDT</text></svg><span class="ticker-symbol">USDT</span></div><span class="ticker-price">$1.00</span><span class="ticker-pct pos">&#9650; 0.01%</span></div>
+        <div class="ticker-item"><div class="ticker-coin"><svg width="16" height="16" viewBox="0 0 16 16"><circle cx="8" cy="8" r="8" fill="#2775CA"/><text x="8" y="11" text-anchor="middle" font-size="6" font-weight="700" fill="white">USDC</text></svg><span class="ticker-symbol">USDC</span></div><span class="ticker-price">$1.00</span><span class="ticker-pct pos">&#9650; 0.00%</span></div>
+        <div class="ticker-item"><div class="ticker-coin"><svg width="16" height="16" viewBox="0 0 16 16"><circle cx="8" cy="8" r="8" fill="#345D9D"/><text x="8" y="11" text-anchor="middle" font-size="6" font-weight="700" fill="white">XRP</text></svg><span class="ticker-symbol">XRP</span></div><span class="ticker-price">$0.5823</span><span class="ticker-pct neg">&#9660; 0.88%</span></div>
+        <div class="ticker-item"><div class="ticker-coin"><svg width="16" height="16" viewBox="0 0 16 16"><circle cx="8" cy="8" r="8" fill="#1BA27A"/><text x="8" y="11" text-anchor="middle" font-size="6" font-weight="700" fill="white">ATOM</text></svg><span class="ticker-symbol">ATOM</span></div><span class="ticker-price">$5.13</span><span class="ticker-pct neg">&#9660; 2.11%</span></div>
+        <div class="ticker-item"><div class="ticker-coin"><svg width="16" height="16" viewBox="0 0 16 16"><circle cx="8" cy="8" r="8" fill="#F7931A"/><text x="8" y="12" text-anchor="middle" font-size="8" font-weight="700" fill="white">&#8383;</text></svg><span class="ticker-symbol">BTC</span></div><span class="ticker-price">$103,539.87</span><span class="ticker-pct pos">&#9650; 3.42%</span></div>
+        <div class="ticker-item"><div class="ticker-coin"><svg width="16" height="16" viewBox="0 0 16 16"><circle cx="8" cy="8" r="8" fill="#627EEA"/><text x="8" y="12" text-anchor="middle" font-size="8" font-weight="700" fill="white">&#926;</text></svg><span class="ticker-symbol">ETH</span></div><span class="ticker-price">$2,239.87</span><span class="ticker-pct neg">&#9660; 3.42%</span></div>
+        <div class="ticker-item"><div class="ticker-coin"><svg width="16" height="16" viewBox="0 0 16 16"><circle cx="8" cy="8" r="8" fill="#000"/><text x="8" y="11" text-anchor="middle" font-size="6" font-weight="700" fill="white">XLM</text></svg><span class="ticker-symbol">XLM</span></div><span class="ticker-price">$0.3066</span><span class="ticker-pct neg">&#9660; 0.42%</span></div>
+        <div class="ticker-item"><div class="ticker-coin"><svg width="16" height="16" viewBox="0 0 16 16"><circle cx="8" cy="8" r="8" fill="#2A5ADA"/><text x="8" y="11" text-anchor="middle" font-size="6" font-weight="700" fill="white">LINK</text></svg><span class="ticker-symbol">LINK</span></div><span class="ticker-price">$16.87</span><span class="ticker-pct neg">&#9660; 0.42%</span></div>
+        <div class="ticker-item"><div class="ticker-coin"><svg width="16" height="16" viewBox="0 0 16 16"><circle cx="8" cy="8" r="8" fill="#C3A634"/><text x="8" y="11" text-anchor="middle" font-size="6" font-weight="700" fill="white">DOGE</text></svg><span class="ticker-symbol">DOGE</span></div><span class="ticker-price">$0.2291</span><span class="ticker-pct neg">&#9660; 1.23%</span></div>
+        <div class="ticker-item"><div class="ticker-coin"><svg width="16" height="16" viewBox="0 0 16 16"><circle cx="8" cy="8" r="8" fill="#0D1E2D"/><text x="8" y="11" text-anchor="middle" font-size="6" font-weight="700" fill="white">ADA</text></svg><span class="ticker-symbol">ADA</span></div><span class="ticker-price">$0.8047</span><span class="ticker-pct pos">&#9650; 0.42%</span></div>
+        <div class="ticker-item"><div class="ticker-coin"><svg width="16" height="16" viewBox="0 0 16 16"><circle cx="8" cy="8" r="8" fill="#8247E5"/><text x="8" y="11" text-anchor="middle" font-size="6" font-weight="700" fill="white">MATIC</text></svg><span class="ticker-symbol">MATIC</span></div><span class="ticker-price">$0.2486</span><span class="ticker-pct neg">&#9660; 4.11%</span></div>
+        <div class="ticker-item"><div class="ticker-coin"><svg width="16" height="16" viewBox="0 0 16 16"><circle cx="8" cy="8" r="8" fill="#E6007A"/><text x="8" y="11" text-anchor="middle" font-size="6" font-weight="700" fill="white">DOT</text></svg><span class="ticker-symbol">DOT</span></div><span class="ticker-price">$5.0296</span><span class="ticker-pct neg">&#9660; 1.45%</span></div>
+        <div class="ticker-item"><div class="ticker-coin"><svg width="16" height="16" viewBox="0 0 16 16"><circle cx="8" cy="8" r="8" fill="#E84142"/><text x="8" y="11" text-anchor="middle" font-size="6" font-weight="700" fill="white">AVAX</text></svg><span class="ticker-symbol">AVAX</span></div><span class="ticker-price">$35.12</span><span class="ticker-pct pos">&#9650; 1.87%</span></div>
+        <div class="ticker-item"><div class="ticker-coin"><svg width="16" height="16" viewBox="0 0 16 16"><circle cx="8" cy="8" r="8" fill="#9945FF"/><text x="8" y="11" text-anchor="middle" font-size="6" font-weight="700" fill="white">SOL</text></svg><span class="ticker-symbol">SOL</span></div><span class="ticker-price">$148.22</span><span class="ticker-pct neg">&#9660; 2.15%</span></div>
+        <div class="ticker-item"><div class="ticker-coin"><svg width="16" height="16" viewBox="0 0 16 16"><circle cx="8" cy="8" r="8" fill="#26A17B"/><text x="8" y="11" text-anchor="middle" font-size="6" font-weight="700" fill="white">USDT</text></svg><span class="ticker-symbol">USDT</span></div><span class="ticker-price">$1.00</span><span class="ticker-pct pos">&#9650; 0.01%</span></div>
+        <div class="ticker-item"><div class="ticker-coin"><svg width="16" height="16" viewBox="0 0 16 16"><circle cx="8" cy="8" r="8" fill="#2775CA"/><text x="8" y="11" text-anchor="middle" font-size="6" font-weight="700" fill="white">USDC</text></svg><span class="ticker-symbol">USDC</span></div><span class="ticker-price">$1.00</span><span class="ticker-pct pos">&#9650; 0.00%</span></div>
+        <div class="ticker-item"><div class="ticker-coin"><svg width="16" height="16" viewBox="0 0 16 16"><circle cx="8" cy="8" r="8" fill="#345D9D"/><text x="8" y="11" text-anchor="middle" font-size="6" font-weight="700" fill="white">XRP</text></svg><span class="ticker-symbol">XRP</span></div><span class="ticker-price">$0.5823</span><span class="ticker-pct neg">&#9660; 0.88%</span></div>
+        <div class="ticker-item"><div class="ticker-coin"><svg width="16" height="16" viewBox="0 0 16 16"><circle cx="8" cy="8" r="8" fill="#1BA27A"/><text x="8" y="11" text-anchor="middle" font-size="6" font-weight="700" fill="white">ATOM</text></svg><span class="ticker-symbol">ATOM</span></div><span class="ticker-price">$5.13</span><span class="ticker-pct neg">&#9660; 2.11%</span></div>
+      </div>
+    </div>
+  </header>
 
   <!-- ===================== HERO ===================== -->
   <section class="hero">
